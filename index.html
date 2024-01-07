@@ -27,17 +27,55 @@
         </div>
       </nav>
     </header>
-  
+
+
     <div style="
       background-color: #adfdfe;
       /* max-width: 700px; */
-      margin: 30px auto;
       padding: 15px;
       line-height: 1.2;
       color: black;
       text-align: center;
       ">
       <h1>团队信息</h1>
+
+    <div style="
+      max-width: 700px;
+      text-align: left;
+      margin: 30px auto;
+      color: black;"
+      id="datetime">
+    </div>
+
+    <script>
+      function updateDateTime() {
+          var now = new Date();
+          var year = now.getFullYear();
+          var month = now.getMonth() + 1; // 月份从 0 开始，需要 +1
+          var day = now.getDate();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+
+          // 添加逻辑保留秒和分前面的零
+          var monthString = month < 10 ? '0' + month : '' + month;
+          var dayString = day < 10 ? '0' + day : '' + day;
+          var hoursString = hours < 10 ? '0' + hours : '' + hours;
+          var minutesString = minutes < 10 ? '0' + minutes : '' + minutes;
+          var secondsString = seconds < 10 ? '0' + seconds : '' + seconds;
+
+          var dateTimeString = year + '年' + monthString + '月' + dayString + '日' + hoursString + ':' + minutesString + ':' + secondsString;
+
+          // 更新页面上的日期和时间
+          document.getElementById('datetime').innerText = dateTimeString;
+      }
+
+      // 初始加载页面时更新一次
+      updateDateTime();
+
+      // 每秒更新一次
+      setInterval(updateDateTime, 1000);
+  </script>
 
     <div style="
       background-color: #adfdfe;
